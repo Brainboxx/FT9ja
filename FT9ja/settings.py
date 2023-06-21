@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'FT9ja',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://chineduaja26:Ajaman7590@ft9ja.fpf4mnt.mongodb.net/?retryWrites=true&w=majority'
+            'host': os.getenv('CONNECTION_STRING')
         }
     }
 }
