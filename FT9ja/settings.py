@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
 import os
 from decouple import config
@@ -88,10 +87,10 @@ WSGI_APPLICATION = 'FT9ja.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'cluster0',
+        'NAME': 'FT9ja',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': config('CONNECTION_STRING')
+            'host': os.getenv('CONNECTION_STRING')
         }
     }
 }
