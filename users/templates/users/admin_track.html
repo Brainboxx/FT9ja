@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block title %} user trade detail {% endblock %}
+
+{% block content %}
+<div class="container">
+        <h1>{{ trader.trader.username }} Trade History</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+<!--                    <th>Current Balance</th>-->
+                    <th>Trade History</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trade in trades %}
+                <tr>
+                    <td>{{ trade.timestamp }}</td>
+<!--                    <td>-->
+<!--                        ${{ trade.trader.account_balance }}-->
+<!--                    </td>-->
+                    <td>
+                        ${{ trade.profit_loss }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

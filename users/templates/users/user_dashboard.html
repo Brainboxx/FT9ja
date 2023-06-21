@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #graph {
+            margin-top: 20px;
+        }
+
+
+</style>
+
+{% block content %}
+<div class="container">
+    <h1>{{request.user.username}}'s Dashboard</h1>
+
+    <div class="balance">
+        <div class="balance-item">
+            <span class="label">Starting Investment:</span>
+            <span class="value">${{ starting_balance }}</span>
+        </div>
+        <div class="balance-item">
+            <span class="label">Current Balance:</span>
+            <span class="value">${{ formatted_balance }}</span>
+        </div>
+    </div>
+
+    <div id="graph"></div>
+</div>
+
+
+<script>
+        // Retrieve data from Django view
+        var timestamps = {{ timestamps|safe }};
+        var profitLoss = {{ profit_loss|safe }};
+
+        // Create data trace
+        var trace = {
+            x: timestamps,
+            y: profitLoss,
+            mode: 'lines',
+            type: 'scatter'
+        };
+
+        // Create layout
+        var layout = {
+            title: 'Profit/Loss Over Time',
+            xaxis: {
+                title: 'Timestamp'
+            },
+            yaxis: {
+                title: 'Profit/Loss'
+            }
+        };
+
+        // Create plot
+        Plotly.newPlot('graph', [trace], layout);
+
+
+
+</script>
+{% endblock %}
