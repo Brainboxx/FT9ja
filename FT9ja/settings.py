@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,24 +80,29 @@ WSGI_APPLICATION = 'FT9ja.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'djongo',
 #         'NAME': 'FT9ja',
+#         'ENFORCE_SCHEMA': False,
+#         'CLIENT': {
+#             'host': config('CONNECTION_STRING')
+#         }
 #     }
 # }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'FT9ja',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': os.getenv('CONNECTION_STRING')
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': os.getenv('POSTGRES_URL'),
+        'NAME': os.getenv('PGNAME'),
+        'USER': os.getenv('PGUSER'),
+        'PASSWORD': os.getenv('PGPASSWORD'),
+        'HOST': os.getenv('PGHOST'),
+        'PORT': os.getenv('PGPORT'),
     }
 }
-
 
 
 # Password validation
@@ -114,6 +122,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 
 # Internationalization
