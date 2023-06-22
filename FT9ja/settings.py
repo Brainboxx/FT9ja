@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'FT9ja.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'djongo',
-#         'NAME': 'FT9ja',
+#         'NAME': 'project',
 #         'ENFORCE_SCHEMA': False,
 #         'CLIENT': {
-#             'host': config('CONNECTION_STRING')
+#             'host': 'mongodb+srv://chineduudochuku66:oXWTVA1jD3Te710s@ft9ja.spnkgbh.mongodb.net/?retryWrites=true&w=majority'
 #         }
 #     }
 # }

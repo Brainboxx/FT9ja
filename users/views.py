@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 from .models import Trade, Trader
 import random
 from datetime import datetime, timedelta
@@ -75,7 +76,7 @@ def user_dashboard(request):
 
     # Retrieve trades from the database
     trades = Trade.objects.filter(trader=trader).order_by('timestamp')
-    profit_loss = [float(trade.profit_loss.to_decimal()) for trade in trades]
+    profit_loss = [float(trade.profit_loss) for trade in trades]
 
     context = {
         'timestamps': timestamps,
