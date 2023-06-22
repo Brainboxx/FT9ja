@@ -31,9 +31,11 @@
                 <a class="nav-link" href="#">Contact</a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'user_dashboard' %}">dashboard</a>
-            </li>
+            {% if request.user.is_superuser %}
+            <a class="nav-link" href="{% url 'admin_dashboard' %}">dashboard</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'user_dashboard' %}">dashboard</a>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>

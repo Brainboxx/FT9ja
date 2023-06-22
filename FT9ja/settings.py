@@ -81,17 +81,6 @@ WSGI_APPLICATION = 'FT9ja.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'project',
-#         'ENFORCE_SCHEMA': False,
-#         'CLIENT': {
-#             'host': 'mongodb+srv://chineduudochuku66:oXWTVA1jD3Te710s@ft9ja.spnkgbh.mongodb.net/?retryWrites=true&w=majority'
-#         }
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
